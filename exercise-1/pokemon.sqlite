@@ -1,0 +1,37 @@
+CREATE TABLE IF NOT EXISTS decks(
+    id INTEGER PRIMARY KEY,
+    title TEXT
+);
+
+INSERT INTO decks (title)
+    VALUES
+        ('Hot'),
+        ('Cold')
+;
+
+SELECT * FROM decks;
+
+INSERT INTO pokemon(
+    name, type, weight, deck_id
+) VALUES
+    ('Pikachu', 'Lightning', 13, 1),
+    ('Squirtle', 'Water', 20, 2),
+    ('Charmander', 'Fire', 19, 1)
+    ('Magikarp', 'Water', 11, null)
+;
+
+-- READ
+SELECT name, type
+FROM pokemon;
+
+-- all pokemon and decks, in 1 table
+SELECT *
+FROM pokemon
+ LEFT JOIN decks
+ ON pokemon.deck_id = decks.id;
+
+-- all pokemon (in decks) and decks, in 1 table.
+ SELECT *
+FROM pokemon
+ INNER JOIN decks
+ ON pokemon.deck_id = decks.id;
